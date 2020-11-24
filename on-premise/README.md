@@ -77,14 +77,14 @@ e.g.) 10.10.10.10 www.example.com
 
 ### username(default): gitea_admin
 ### Log error correction   
->│ gitea @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-│ gitea @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @
-│ gitea @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-│ gitea Permissions 0755 for '/data/ssh/ssh_host_rsa_key' are too open.
-│ gitea It is required that your private key files are NOT accessible by others.
-│ gitea This private key will be ignored.
-│ gitea Unable to load host key "/data/ssh/ssh_host_rsa_key": bad permissions
-│ gitea Unable to load host key: /data/ssh/ssh_host_rsa_key
+>│ gitea @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+│ gitea @         WARNING: UNPROTECTED PRIVATE KEY FILE!          @  
+│ gitea @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@  
+│ gitea Permissions 0755 for '/data/ssh/ssh_host_rsa_key' are too open.  
+│ gitea It is required that your private key files are NOT accessible by others.  
+│ gitea This private key will be ignored.  
+│ gitea Unable to load host key "/data/ssh/ssh_host_rsa_key": bad permissions  
+│ gitea Unable to load host key: /data/ssh/ssh_host_rsa_key  
 ```bash
 chmod 600 ~/.ssh/your-key.pem
 ```
