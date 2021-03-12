@@ -3,11 +3,25 @@ Vagrant.configure("2") do |config|
  config.vm.box_check_update = true
 
 # Create the cent1 Server
-config.vm.define "master" do |cent1|
- cent1.vm.hostname = "master"
- cent1.vm.network "private_network", ip: "172.16.0.10"
- cent1.vm.provider "virtualbox" do |v|
+config.vm.define "master" do |cent|
+ cent.vm.hostname = "master"
+ cent.vm.network "private_network", ip: "172.16.0.10"
+ cent.vm.provider "virtualbox" do |v|
   v.name = "master"
+  v.memory = 2048
+  v.cpus = 2
+  v.linked_clone = true
+  v.gui = false
+end
+ cent.vm.provision "shell", path: "script.sh"
+end
+
+# Create the cent1 Server
+config.vm.define "managed" do |cent1|
+ cent1.vm.hostname = "managed"
+ cent1.vm.network "private_network", ip: "172.16.0.11"
+ cent1.vm.provider "virtualbox" do |v|
+  v.name = "managed"
   v.memory = 2048
   v.cpus = 2
   v.linked_clone = true
@@ -17,11 +31,11 @@ end
 end
 
 # Create the cent2 Server
-config.vm.define "node1" do |cent2|
- cent2.vm.hostname = "node1"
- cent2.vm.network "private_network", ip: "172.16.0.11"
+config.vm.define "worker1" do |cent2|
+ cent2.vm.hostname = "worker1"
+ cent2.vm.network "private_network", ip: "172.16.0.21"
  cent2.vm.provider "virtualbox" do |v|
-  v.name = "node1"
+  v.name = "worker1"
   v.memory = 1024
   v.cpus = 1
   v.linked_clone = true
@@ -31,11 +45,11 @@ cent2.vm.provision "shell", path: "script.sh"
 end
 
 # Create the cent3 Server
-config.vm.define "node2" do |cent3|
- cent3.vm.hostname = "node2"
- cent3.vm.network "private_network", ip: "172.16.0.12"
+config.vm.define "worker2" do |cent3|
+ cent3.vm.hostname = "worker2"
+ cent3.vm.network "private_network", ip: "172.16.0.22"
  cent3.vm.provider "virtualbox" do |v|
-  v.name = "node2"
+  v.name = "worker2"
   v.memory = 1024
   v.cpus = 1
   v.linked_clone = true
@@ -45,16 +59,16 @@ cent3.vm.provision "shell", path: "script.sh"
 end
 
 # Create the cent4 Server
-config.vm.define "node3" do |cent4|
- cent4.vm.hostname = "node3"
- cent4.vm.network "private_network", ip: "172.16.0.13"
- cent4.vm.provider "virtualbox" do |v|
-  v.name = "node3"
-  v.memory = 1024
-  v.cpus = 1
-  v.linked_clone = true
-  v.gui = false
-end
-cent4.vm.provision "shell", path: "script.sh"
-end
+# config.vm.define "worker3" do |cent4|
+#  cent4.vm.hostname = "worker3"
+#  cent4.vm.network "private_network", ip: "172.16.0.33"
+#  cent4.vm.provider "virtualbox" do |v|
+#   v.name = "worker3"
+#   v.memory = 1024
+#   v.cpus = 1
+#   v.linked_clone = true
+#   v.gui = false
+# end
+# cent4.vm.provision "shell", path: "script.sh"
+# end
 end

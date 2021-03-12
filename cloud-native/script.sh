@@ -6,9 +6,9 @@ sudo yum -y install telnet
 # hosts
 sudo cat << EOF >> /etc/hosts
 172.16.0.10 master
-172.16.0.11 node1
-172.16.0.12 node2
-172.16.0.13 node3
+172.16.0.11 managed
+172.16.0.21 worker1
+172.16.0.22 worker2
 EOF
 
 ## Letting iptables see bridged traffic
